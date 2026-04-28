@@ -3,10 +3,39 @@
 // and Express handles its own sub-routing.
 
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { createApp } from "../apps/api/src/app.js";
 
-const app = createApp();
+let appPromise: Promise<(req: IncomingMessage, res: ServerResponse) => void> | null = null;
+let initError: Error | null = null;
 
-export default function handler(req: IncomingMessage, res: ServerResponse) {
-  return app(req, res);
+function loadApp() {
+  if (!appPromise) {
+    appPromise = import("../apps/api/src/app.js")
+      .then((m) => m.createApp() as (req: IncomingMessage, res: ServerResponse) => void)
+      .catch((err: Error) => {
+        initError = err;
+        throw err;
+      });
+  }
+  return appPromise;
+}
+
+export default async function handler(req: IncomingMessage, res: ServerResponse) {
+  try {
+    const app = await loadApp();
+    return app(req, res);
+  } catch (err) {
+    const message =
+      err instanceof Error ? err.message : "unknown error";
+    const stack = err instanceof Error ? err.stack : undefined;
+    res.statusCode = 500;
+    res.setHeader("Content-Type", "application/json");
+    res.end(
+      JSON.stringify({
+        error: "function_init_failed",
+        message,
+        stack: process.env.VERCEL_ENV === "production" ? undefined : stack,
+        priorInitError: initError?.message,
+      }),
+    );
+  }
 }

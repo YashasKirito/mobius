@@ -1,8 +1,8 @@
 {
-  "buildCommand": "echo CWD=$(pwd) && ls -la && cd apps/web && node ../../node_modules/vite/bin/vite.js build",
+  "buildCommand": "cd apps/web && node ../../node_modules/vite/bin/vite.js build",
   "outputDirectory": "apps/web/dist",
   "framework": null,
-  "installCommand": "echo INSTALL_CWD=$(pwd) && npm install --include=dev --workspaces --include-workspace-root",
+  "installCommand": "npm install --include=dev --workspaces --include-workspace-root",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
