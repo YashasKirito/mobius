@@ -1,0 +1,11 @@
+.git
+.turbo
+**/.turbo
+**/dist
+**/.cache
+**/coverage
+**/*.log
+.DS_Store
+.vscode
+.idea
+.claude

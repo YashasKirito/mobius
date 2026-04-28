@@ -1,0 +1,22 @@
+node_modules
+dist
+build
+.turbo
+.next
+.cache
+coverage
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea

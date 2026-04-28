@@ -1,0 +1,8 @@
+/* Page reset — Dark Morphism tokens are loaded from streaming/styles/dark-morphism.css */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #0a0b14;
+  color: #f4f5ff;
+}

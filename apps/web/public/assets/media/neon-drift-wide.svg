@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="grain"><feTurbulence baseFrequency="0.9" numOctaves="2"></feTurbulence><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.10 0"></feColorMatrix></filter>
+  </defs>
+  <rect width="1600" height="900" fill="#0e0e13"></rect>
+  
+  <radialGradient id="v" cx="0.5" cy="0.5" r="0.7"><stop offset="50%" stop-color="#000" stop-opacity="0"></stop><stop offset="100%" stop-color="#000" stop-opacity="0.55"></stop></radialGradient>
+  <rect width="1600" height="900" fill="url(#v)"></rect>
+  
+  <circle cx="800" cy="378" r="162" fill="none" stroke="#c9a96a" stroke-width="1" opacity="0.85"></circle>
+  <circle cx="800" cy="378" r="72" fill="#c9a96a" opacity="0.92"></circle>
+  
+  <text x="96" y="90" font-family="Times New Roman, serif" font-style="italic" font-size="24" fill="#c9a96a" letter-spacing="2">M ø b i u s</text>
+  
+  <line x1="96" y1="649.2" x2="176" y2="649.2" stroke="#c9a96a" stroke-width="1.2"></line>
+  
+  <text x="96" y="702" font-family="Times New Roman, serif" font-style="italic" font-weight="400" font-size="96" fill="#f4f5ff" letter-spacing="-2">Neon Drift</text>
+  
+  <text x="96" y="742.32" font-family="ui-monospace, JetBrains Mono, monospace" font-size="22" fill="#8b8fb8" letter-spacing="4">A LATE-NIGHT DESCENT</text>
+  
+  <rect width="1600" height="900" fill="black" filter="url(#grain)" opacity="0.30"></rect>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <radialGradient id="pearl" cx="0.30" cy="0.20" r="0.85">
+      <stop offset="0%" stop-color="#ffffff"></stop>
+      <stop offset="40%" stop-color="#e8e9f3"></stop>
+      <stop offset="100%" stop-color="#c8cae6"></stop>
+    </radialGradient>
+    <filter id="dm-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.55"></feDropShadow>
+    </filter>
+  </defs>
+  <g filter="url(#dm-shadow)">
+    <path d="M 40 12 C 56 12, 68 24, 68 40 C 68 56, 56 68, 40 68 C 28 68, 18 60, 14 48 C 22 52, 32 50, 38 42 C 44 34, 42 24, 36 18 C 37 14, 38 12, 40 12 Z" fill="url(#pearl)" stroke="rgba(255,255,255,0.30)" stroke-width="0.5"></path>
+    <circle cx="52" cy="28" r="3.2" fill="#0a0b14"></circle>
+  </g>
+  <text x="88" y="48" font-family="Space Grotesk, system-ui, sans-serif" font-size="28" font-weight="700" letter-spacing="-0.02em" fill="#f4f5ff">DARK</text>
+  <text x="88" y="68" font-family="Space Grotesk, system-ui, sans-serif" font-size="14" font-weight="500" letter-spacing="0.18em" fill="#8b8fb8">M O R P H I S M</text>
+</svg>

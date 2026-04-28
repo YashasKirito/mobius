@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <radialGradient id="pearl" cx="0.30" cy="0.20" r="0.85">
+      <stop offset="0%" stop-color="#ffffff"></stop>
+      <stop offset="40%" stop-color="#e8e9f3"></stop>
+      <stop offset="100%" stop-color="#c8cae6"></stop>
+    </radialGradient>
+  </defs>
+  <path d="M 40 8 C 58 8, 72 22, 72 40 C 72 58, 58 72, 40 72 C 26 72, 14 62, 10 50 C 20 54, 32 52, 40 42 C 48 32, 46 20, 38 12 C 39 10, 39 8, 40 8 Z" fill="url(#pearl)" stroke="rgba(255,255,255,0.30)" stroke-width="0.5"></path>
+  <circle cx="54" cy="26" r="3.6" fill="#0a0b14"></circle>
+</svg>

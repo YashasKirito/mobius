@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="grain"><feTurbulence baseFrequency="0.9" numOctaves="2"></feTurbulence><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.10 0"></feColorMatrix></filter>
+  </defs>
+  <rect width="800" height="1200" fill="#0c0c12"></rect>
+  
+  <radialGradient id="v" cx="0.5" cy="0.5" r="0.7"><stop offset="50%" stop-color="#000" stop-opacity="0"></stop><stop offset="100%" stop-color="#000" stop-opacity="0.55"></stop></radialGradient>
+  <rect width="800" height="1200" fill="url(#v)"></rect>
+  
+  <circle cx="400" cy="504" r="40" fill="#c9a96a"></circle>
+  <circle cx="400" cy="504" r="96" fill="none" stroke="#c9a96a" stroke-width="0.6" opacity="0.4"></circle>
+  <circle cx="400" cy="504" r="160" fill="none" stroke="#c9a96a" stroke-width="0.4" opacity="0.2"></circle>
+  
+  <text x="48" y="120" font-family="Times New Roman, serif" font-style="italic" font-size="22" fill="#c9a96a" letter-spacing="2">M ø b i u s</text>
+  
+  <line x1="48" y1="887.6" x2="128" y2="887.6" stroke="#c9a96a" stroke-width="1.2"></line>
+  
+  <text x="48" y="936" font-family="Times New Roman, serif" font-style="italic" font-weight="400" font-size="88" fill="#f4f5ff" letter-spacing="-2">Solar Flare</text>
+  
+  <text x="48" y="972.96" font-family="ui-monospace, JetBrains Mono, monospace" font-size="18" fill="#8b8fb8" letter-spacing="3">COMING SOON</text>
+  
+  <rect width="800" height="1200" fill="black" filter="url(#grain)" opacity="0.30"></rect>
+</svg>
