@@ -3,6 +3,7 @@ import { Bell, Search, X } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router";
 import { useAuthStore } from "../../stores/authStore";
 import { MobiusMark } from "./MobiusMark";
+import { SettingsMenu } from "./SettingsMenu";
 
 const links = ["Home", "Series", "Films", "Live", "My List"] as const;
 
@@ -114,6 +115,7 @@ export function TopNav({ active = "Home" }: Props) {
           <Search size={20} />
         </button>
       )}
+      <SettingsMenu />
       <button
         type="button"
         className="dm-nav__icon-btn"

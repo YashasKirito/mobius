@@ -9,3 +9,4 @@ export type HelloResponse = {
 
 export * from "./tmdb.js";
 export * from "./catalog.js";
+export * from "./stream.js";

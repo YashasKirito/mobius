@@ -8,6 +8,10 @@ export type TmdbList<T> = {
 
 export type TmdbGenre = { id: number; name: string };
 
+export type TmdbExternalIds = {
+  imdb_id: string | null;
+};
+
 export type TmdbBaseMovie = {
   id: number;
   title?: string;

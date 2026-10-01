@@ -2,6 +2,7 @@ import { cached, TTL } from "../lib/cache.js";
 import { tmdbFetch } from "../lib/http.js";
 import type {
   TmdbBaseMovie,
+  TmdbExternalIds,
   TmdbGenre,
   TmdbImageBundle,
   TmdbList,
@@ -83,6 +84,11 @@ export const tmdb = {
       tmdbFetch<TmdbImageBundle>(`/${kind}/${id}/images`, {
         include_image_language: "en,null",
       }),
+    ),
+
+  externalIds: ({ kind, id }: { kind: "movie" | "tv"; id: number }) =>
+    cached(`external-ids:${kind}:${id}`, TTL.detail, () =>
+      tmdbFetch<TmdbExternalIds>(`/${kind}/${id}/external_ids`),
     ),
 
   movieGenres: () =>
