@@ -4,6 +4,9 @@ import { LoadingOverlay } from "../auth/components/LoadingOverlay";
 import { useTitle } from "../queries/catalog";
 import { vidcoreMovieUrl, vidcoreTvUrl } from "../lib/vidcore";
 import { Watch } from "../streaming/components/Watch";
+import { TorrentWatch } from "../streaming/components/TorrentWatch";
+import { useSettingsStore } from "../stores/settingsStore";
+import { useStreamStatus } from "../queries/stream";
 
 function isKind(value: string | undefined): value is MediaKind {
   return value === "movie" || value === "tv";
@@ -23,6 +26,8 @@ export function WatchRoute() {
   const numericId = params.id ? Number(params.id) : NaN;
   const id = Number.isFinite(numericId) ? numericId : undefined;
 
+  const playbackMode = useSettingsStore((s) => s.playbackMode);
+  const { data: status } = useStreamStatus();
   const { data: item, isPending, isError } = useTitle(kind, id);
 
   if (!kind || id === undefined) {
@@ -59,15 +64,29 @@ export function WatchRoute() {
     );
   }
 
-  const src =
-    kind === "movie"
-      ? vidcoreMovieUrl(id)
-      : vidcoreTvUrl(
-          id,
-          parsePositive(search.get("s"), 1),
-          parsePositive(search.get("e"), 1),
-        );
+  const season = parsePositive(search.get("s"), 1);
+  const episode = parsePositive(search.get("e"), 1);
 
+  const useTorrent = playbackMode === "torrent" && status?.available === true;
+
+  if (useTorrent) {
+    return (
+      <TorrentWatch
+        kind={kind}
+        id={id}
+        season={kind === "tv" ? season : undefined}
+        episode={kind === "tv" ? episode : undefined}
+        title={item.title}
+        onClose={() => navigate(-1)}
+        onFallback={() =>
+          useSettingsStore.getState().setPlaybackMode("vidcore")
+        }
+      />
+    );
+  }
+
+  const src =
+    kind === "movie" ? vidcoreMovieUrl(id) : vidcoreTvUrl(id, season, episode);
   return <Watch src={src} title={item.title} onClose={() => navigate(-1)} />;
 }
 

@@ -5,6 +5,8 @@ import { httpLogger, logger } from "./lib/logger.js";
 import { TmdbError } from "./lib/http.js";
 import { catalogRouter } from "./routes/catalog.js";
 import { tmdbRouter } from "./routes/tmdb.js";
+import { streamRouter } from "./stream/router.js";
+import { StreamError } from "./stream/errors.js";
 
 export function createApp() {
   const app = express();
@@ -26,8 +28,14 @@ export function createApp() {
 
   app.use("/api/tmdb", tmdbRouter);
   app.use("/api/catalog", catalogRouter);
+  app.use("/api/stream", streamRouter);
 
   app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
+    if (err instanceof StreamError) {
+      logger.warn({ err }, "stream error");
+      res.status(err.status).json({ error: err.code, message: err.message });
+      return;
+    }
     if (err instanceof TmdbError) {
       if (err.status === 401 || err.status === 403) {
         logger.error({ err }, "tmdb auth misconfig");
